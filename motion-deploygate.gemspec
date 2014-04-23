@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Watson"]
   spec.email         = ["watson1978@gmail.com"]
   spec.description   = %q{DeployGate integration for RubyMotion projects}
-  spec.summary       = gem.description
+  spec.summary       = spec.description
   spec.homepage      = "https://github.com/Watson1978/motion-deploygate"
   spec.license       = "MIT"
 
