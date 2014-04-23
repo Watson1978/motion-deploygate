@@ -33,6 +33,8 @@ Motion::Project::App.setup do |app|
 end
 ```
 
+3. Run `rake archive` when deploy your app. Then, upload `./build/iPhoneOS-XXXX/your_app.ipa` to DeployGate.
+
 ## Contributing
 
 1. Fork it
