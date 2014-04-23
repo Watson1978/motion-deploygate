@@ -98,6 +98,19 @@ namespace :deploygate do
     Rake::Task["archive"].invoke
     App.info "DeployGate", "Submit #{config.name}.ipa to DeployGate"
     app_path = "build/iPhoneOS-#{config.deployment_target}-Development/#{config.name}.ipa"
-    sh "/usr/local/bin/dgate push #{config.deploygate.user_id} #{app_path}"
+    sh "/usr/local/bin/dgate push #{config.deploygate.user_id} \"#{app_path}\""
+  end
+
+  desc "Symbolicate a crash log"
+  task :symbolicate do
+    config = App.config
+    crashlog_path = File.expand_path(ENV['file'] || "")
+    if ENV['file'].to_s == "" || !File.exist?(crashlog_path) 
+      App.fail "Usage: \"rake deploygate:symbolicate file=file_path_to_crashlog\""
+    end
+
+    symbolicatecrash = "#{config.xcode_dir}/Platforms/iPhoneOS.platform/Developer/Library/PrivateFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/symbolicatecrash"
+    dsym_path = "build/iPhoneOS-#{config.deployment_target}-Development/#{config.name}.dSYM"
+    sh "DEVELOPER_DIR=#{config.xcode_dir} #{symbolicatecrash} \"#{crashlog_path}\" \"#{dsym_path}\""
   end
 end
