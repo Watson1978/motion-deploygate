@@ -5,6 +5,8 @@ unless defined?(Motion::Project::Config)
 end
 
 class DeployGateConfig
+  attr_reader :user_id
+
   def initialize(config)
     @config = config
     @user_infomation = false
@@ -87,3 +89,15 @@ module Motion; module Project; class Config
   end
 
 end; end; end
+
+namespace :deploygate do
+  desc "Submit an archive to DeployGate"
+  task :submit do
+    config = App.config
+
+    Rake::Task["archive"].invoke
+    App.info "DeployGate", "Submit #{config.name}.ipa to DeployGate"
+    app_path = "build/iPhoneOS-#{config.deployment_target}-Development/#{config.name}.ipa"
+    sh "/usr/local/bin/dgate push #{config.deploygate.user_id} #{app_path}"
+  end
+end

@@ -18,9 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-1. Download the DeployGate SDK for iOS from https://deploygate.com/docs/ios_sdk and unpack it. Then, copy `DeployGateSDK.framework` into `vendor` directory of your RubyMotion project. Create the `vendor` directory if it does not exist.
+1. Install the DeployGate command with `curl https://deploygate.com/install.sh | /bin/sh` on Terminal.app.
 
-2. Configure the DeployGate SDK in your `Rakefile`. Set up `user_id`, `api_key`, `user_infomation` and `sdk` variables as following.
+2. Download the DeployGate SDK for iOS from https://deploygate.com/docs/ios_sdk and unpack it. Then, copy `DeployGateSDK.framework` into `vendor` directory of your RubyMotion project. Create the `vendor` directory if it does not exist.
+
+3. Configure the DeployGate SDK in your `Rakefile`. Set up `user_id`, `api_key`, `user_infomation` and `sdk` variables as following.
 
 ```ruby
 Motion::Project::App.setup do |app|
@@ -33,7 +35,7 @@ Motion::Project::App.setup do |app|
 end
 ```
 
-Finally, run `rake archive` when deploy your app. Then, upload `./build/iPhoneOS-XXXX/your_app.ipa` to DeployGate.
+Finally, run `rake deploygate:submit` when deploy your app.
 
 ## Contributing
 
