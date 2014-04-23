@@ -10,6 +10,7 @@ class DeployGateConfig
   end
 
   def sdk=(sdk)
+    @sdk = sdk
     @config.vendor_project(
       sdk,
       :static,
@@ -17,7 +18,32 @@ class DeployGateConfig
       :headers_dir => 'Headers'
     )
     @config.frameworks << 'SystemConfiguration'
+    apply_patch
   end
+
+  def apply_patch
+    Dir.glob(File.join(@sdk, "Headers") + "/*.h") do |file|
+      file = File.expand_path(file)
+      data = File.read(file)
+      new_data = []
+      data.each_line do |line|
+        # comment out "@property(nonatomic) DeployGateSDKOption options;" line
+        if line.strip == "@property(nonatomic) DeployGateSDKOption options;"
+          new_data << "// #{line}"
+        else
+          new_data << line
+        end
+      end
+
+      new_data = new_data.join
+      if data != new_data
+        File.open(file, "w") do |io|
+            io.write new_data
+        end
+      end
+    end
+  end
+
 end
 
 module Motion; module Project; class Config
