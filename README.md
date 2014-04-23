@@ -1,6 +1,6 @@
 # motion-deploygate
 
-TODO: Write a gem description
+DeployGate integration for RubyMotion projects
 
 ## Installation
 
@@ -18,7 +18,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+Motion::Project::App.setup do |app|
+  ...
+  app.deploygate.user_id = '<user_id>'
+  app.deploygate.api_key = '<api_key>'
+  app.deploygate.user_infomation = true # or false
+  ...
+end
+```
 
 ## Contributing
 
