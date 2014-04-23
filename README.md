@@ -16,7 +16,7 @@ Or install it yourself as:
 
     $ gem install motion-deploygate
 
-## Usage
+## Setup
 
 1. Install the DeployGate command with `curl https://deploygate.com/install.sh | /bin/sh` on Terminal.app.
 
@@ -35,7 +35,21 @@ Motion::Project::App.setup do |app|
 end
 ```
 
-Finally, run `rake deploygate:submit` when deploy your app.
+## Usage
+
+### Submit your app to DeployGate
+
+```
+% rake deploygate:submit
+```
+
+### Symbolicate a crashlog
+
+Download a crashlog from DeployGate then run the following command to symbolicate a crashlog.
+
+```
+% rake deploygate:symbolicate file=file_path_to_crashlog
+```
 
 ## Contributing
 
