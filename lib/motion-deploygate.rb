@@ -12,12 +12,10 @@ class DeployGateConfig
 
   def user_id=(id)
     @user_id = id
-    create_launcher
   end
 
   def api_key=(key)
     @api_key = key
-    create_launcher
   end
 
   def user_infomation=(bool)
@@ -33,6 +31,7 @@ class DeployGateConfig
       :headers_dir => 'Headers'
     )
     @config.frameworks << 'SystemConfiguration'
+    create_launcher
     apply_patch
   end
 
