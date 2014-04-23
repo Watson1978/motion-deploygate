@@ -4,12 +4,12 @@ VERSION = "1.0"
 Gem::Specification.new do |spec|
   spec.name          = "motion-deploygate"
   spec.version       = VERSION
-  spec.authors       = [""]
+  spec.authors       = ["Watson"]
   spec.email         = ["watson1978@gmail.com"]
   spec.description   = %q{DeployGate integration for RubyMotion projects}
-  spec.summary       = %q{DeployGate integration for RubyMotion projects}
-  spec.homepage      = ""
-  spec.license       = ""
+  spec.summary       = gem.description
+  spec.homepage      = "https://github.com/Watson1978/motion-deploygate"
+  spec.license       = "MIT"
 
   files = []
   files << 'README.md'
