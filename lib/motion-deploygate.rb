@@ -100,7 +100,8 @@ namespace :deploygate do
     Rake::Task["archive"].invoke
     App.info "DeployGate", "Submit #{config.name}.ipa to DeployGate"
     app_path = "build/iPhoneOS-#{config.deployment_target}-Development/#{config.name}.ipa"
-    sh "/usr/local/bin/dgate push #{config.deploygate.user_id} \"#{app_path}\""
+    message = ENV['message'] ? "-m \"#{ENV['message']}\"" : ""
+    sh "/usr/local/bin/dgate push #{config.deploygate.user_id} \"#{app_path}\" #{message}"
   end
 
   desc "Symbolicate a crash log"

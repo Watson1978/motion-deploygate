@@ -43,7 +43,10 @@ end
 
 ```
 % rake deploygate:submit
+% rake deploygate:submit message="test version"
 ```
+
+The `message` parameter is optional, and its content will be used as the description of submission.
 
 ### Symbolicate a crashlog
 
