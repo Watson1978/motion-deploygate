@@ -64,9 +64,9 @@ EOF
       data = File.read(file)
       new_data = []
       data.each_line do |line|
-        # comment out "@property(nonatomic) DeployGateSDKOption options;" line
-        if line.strip == "@property(nonatomic) DeployGateSDKOption options;"
-          new_data << "// #{line}"
+        # replace "typedef enum" declaration to avoid http://hipbyte.myjetbrains.com/youtrack/issue/RM-479
+        if line.strip == "typedef enum DeployGateSDKOption : NSUInteger {"
+          new_data << "typedef enum DeployGateSDKOption {\n"
         else
           new_data << line
         end
