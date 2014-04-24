@@ -75,7 +75,7 @@ EOF
       new_data = new_data.join
       if data != new_data
         File.open(file, "w") do |io|
-            io.write new_data
+          io.write new_data
         end
       end
     end
