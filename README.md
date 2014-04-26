@@ -22,7 +22,7 @@ Or install it yourself as:
 
 2. Download the DeployGate SDK for iOS from https://deploygate.com/docs/ios_sdk and unpack it. Then, copy `DeployGateSDK.framework` into `vendor` directory of your RubyMotion project. Create the `vendor` directory if it does not exist.
 
-3. Configure the DeployGate SDK in your `Rakefile`. Set up `user_id`, `api_key`, `user_infomation` and `sdk` variables as following.
+3. Configure the DeployGate SDK in your `Rakefile`. Set up `user_id`, `api_key` and `sdk` variables as following.
 
 ```ruby
 Motion::Project::App.setup do |app|
@@ -30,9 +30,39 @@ Motion::Project::App.setup do |app|
   app.development do
     app.deploygate.user_id = '<user_id>'
     app.deploygate.api_key = '<api_key>'
-    app.deploygate.user_infomation = true # or false
     app.deploygate.sdk = 'vendor/DeployGateSDK.framework'
   end
+  ...
+end
+```
+
+### User authentication
+
+If you would enable this feature, the testers can receive a notification when you will submit a new version to DeployGate.
+Set up `user_infomation` and `url_scheme` variables to use the user authentication in your `Rakefile`. 
+
+```ruby
+Motion::Project::App.setup do |app|
+  ...
+  app.development do
+    app.deploygate.user_id = '<user_id>'
+    app.deploygate.api_key = '<api_key>'
+    app.deploygate.user_infomation = true
+    app.deploygate.url_scheme = "deploygate.XXXXXXXXXXXX"
+    app.deploygate.sdk = 'vendor/DeployGateSDK.framework'
+  end
+  ...
+end
+```
+
+Then, add `application:didFinishLaunchingWithOptions:` method in your `AppDelegate` like the following.
+
+```ruby
+class AppDelegate
+  def application(application, openURL:url, sourceApplication:sourceApplication, annotation:annotation)
+    return DeployGateSDK.sharedInstance.handleOpenUrl(url, sourceApplication:sourceApplication, annotation:annotation)
+  end
+
   ...
 end
 ```

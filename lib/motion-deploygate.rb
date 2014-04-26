@@ -24,6 +24,15 @@ class DeployGateConfig
     @user_infomation = bool
   end
 
+  def url_scheme=(scheme)
+    @config.info_plist['CFBundleURLTypes'] = [
+      {
+        'CFBundleURLName'    => @config.identifier,
+        'CFBundleURLSchemes' => [scheme]
+      }
+    ]
+  end
+
   def sdk=(sdk)
     @sdk = sdk
     @config.vendor_project(
