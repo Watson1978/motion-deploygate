@@ -18,11 +18,9 @@ Or install it yourself as:
 
 ## Setup
 
-1. Install the DeployGate command with `curl https://deploygate.com/install.sh | /bin/sh` on Terminal.app.
+1. Download the DeployGate SDK for iOS from https://deploygate.com/docs/ios_sdk and unpack it. Then, copy `DeployGateSDK.framework` into `vendor` directory of your RubyMotion project. Create the `vendor` directory if it does not exist.
 
-2. Download the DeployGate SDK for iOS from https://deploygate.com/docs/ios_sdk and unpack it. Then, copy `DeployGateSDK.framework` into `vendor` directory of your RubyMotion project. Create the `vendor` directory if it does not exist.
-
-3. Configure the DeployGate SDK in your `Rakefile`. Set up `user_id`, `api_key` and `sdk` variables as following.
+2. Configure the DeployGate SDK in your `Rakefile`. Set up `user_id`, `api_key` and `sdk` variables as following.
 
 ```ruby
 Motion::Project::App.setup do |app|
@@ -39,7 +37,7 @@ end
 ### User authentication
 
 If you would enable this feature, the testers can receive a notification when you will submit a new version to DeployGate.
-Set up `user_infomation` and `url_scheme` variables to use the user authentication in your `Rakefile`. 
+Set up `user_infomation` and `url_scheme` variables to use the user authentication in your `Rakefile`.
 
 ```ruby
 Motion::Project::App.setup do |app|
