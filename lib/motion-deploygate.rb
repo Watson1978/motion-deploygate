@@ -23,6 +23,7 @@ class DeployGateConfig
   def user_infomation=(bool)
     @user_infomation = bool
   end
+  alias :user_information= :user_infomation=
 
   def url_scheme=(scheme)
     @config.info_plist['CFBundleURLTypes'] = [

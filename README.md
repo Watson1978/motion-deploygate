@@ -45,7 +45,7 @@ Motion::Project::App.setup do |app|
   app.development do
     app.deploygate.user_id = '<user_id>'
     app.deploygate.api_key = '<api_key>'
-    app.deploygate.user_infomation = true
+    app.deploygate.user_information = true
     app.deploygate.url_scheme = "deploygate.XXXXXXXXXXXX"
     app.deploygate.sdk = 'vendor/DeployGateSDK.framework'
   end
