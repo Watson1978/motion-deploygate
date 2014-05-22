@@ -59,6 +59,15 @@ if Object.const_defined?('DeployGateSDK') and !UIDevice.currentDevice.model.incl
   NSNotificationCenter.defaultCenter.addObserverForName(UIApplicationDidFinishLaunchingNotification, object:nil, queue:nil, usingBlock:lambda do |notification|
     DeployGateSDK.sharedInstance.launchApplicationWithAuthor('#{@user_id}', key:'#{@api_key}', userInfomationEnabled:#{@user_infomation})
   end)
+
+  class #{@config.delegate_class}
+    unless #{@config.delegate_class}.method_defined?("application:openURL:sourceApplication:annotation:")
+      def application(application, openURL:url, sourceApplication:sourceApplication, annotation:annotation)
+        return DeployGateSDK.sharedInstance.handleOpenUrl(url, sourceApplication:sourceApplication, annotation:annotation)
+      end
+    end
+  end
+
 end
 EOF
     launcher_file = './app/deploygate_launcher.rb'
