@@ -53,7 +53,7 @@ Motion::Project::App.setup do |app|
 end
 ```
 
-Then, add `application:didFinishLaunchingWithOptions:` method in your `AppDelegate` like the following.
+Then, add `application:didFinishLaunchingWithOptions:` method in your `AppDelegate` like the following. (It will be generated automatically since ver 0.4)
 
 ```ruby
 class AppDelegate
