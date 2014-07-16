@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-VERSION = "0.4"
+VERSION = "0.4.1"
 
 Gem::Specification.new do |spec|
   spec.name          = "motion-deploygate"
