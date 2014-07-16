@@ -132,7 +132,7 @@ namespace :deploygate do
     end
 
     symbolicatecrash = "#{config.xcode_dir}/Platforms/iPhoneOS.platform/Developer/Library/PrivateFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/symbolicatecrash"
-    dsym_path = "build/iPhoneOS-#{config.deployment_target}-Development/#{config.name}.dSYM"
+    dsym_path = App.config.app_bundle_dsym('iPhoneOS')
     sh "DEVELOPER_DIR=#{config.xcode_dir} #{symbolicatecrash} \"#{crashlog_path}\" \"#{dsym_path}\""
   end
 end
