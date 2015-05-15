@@ -10,7 +10,6 @@ Gem::Specification.new do |spec|
   spec.summary       = spec.description
   spec.homepage      = "https://github.com/Watson1978/motion-deploygate"
   spec.license       = "MIT"
-  spec.extensions    = ['ext/extconf.rb'] # DeployGate Command-Line Tool Installer
 
   files = []
   files << 'README.md'
@@ -21,4 +20,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "rake"
+  spec.add_dependency "dgate"
 end
