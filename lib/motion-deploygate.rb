@@ -120,7 +120,7 @@ namespace :deploygate do
     App.info "DeployGate", "Submit #{config.name}.ipa to DeployGate"
     app_path = "build/iPhoneOS-#{config.deployment_target}-#{config.build_mode.to_s.capitalize}/#{config.name}.ipa"
     message = ENV['message'] ? "-m \"#{ENV['message']}\"" : ""
-    sh "/usr/local/bin/dgate push #{config.deploygate.user_id} \"#{app_path}\" #{message}"
+    sh "dgate push #{config.deploygate.user_id} \"#{app_path}\" #{message}"
   end
 
   desc "Symbolicate a crash log"
