@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    motion-deploygate (0.4.2)
+    motion-deploygate (0.5)
       dgate
 
 GEM

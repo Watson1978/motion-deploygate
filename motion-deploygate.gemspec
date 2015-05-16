@@ -1,12 +1,12 @@
 # -*- encoding: utf-8 -*-
-VERSION = "0.4.2"
+VERSION = "0.5"
 
 Gem::Specification.new do |spec|
   spec.name          = "motion-deploygate"
   spec.version       = VERSION
   spec.authors       = ["Watson"]
   spec.email         = ["watson1978@gmail.com"]
-  spec.description   = %q{DeployGate integration for RubyMotion projects}
+  spec.description   = %q{DeployGate integration for RubyMotion iOS/Android projects}
   spec.summary       = spec.description
   spec.homepage      = "https://github.com/Watson1978/motion-deploygate"
   spec.license       = "MIT"
