@@ -69,16 +69,15 @@ end
 
 ### Android
 
-1. Download the DeployGate SDK for Android from https://deploygate.com/docs/sdk and unpack it. Then, copy `deploygatesdk.jar` (which putted in `deploygatesdk/libs/deploygatesdk.jar`) into `vendor` directory of your RubyMotion Android project. Create the `vendor` directory if it does not exist.
+Now, it can't use the feature of DeployGate Android SDK (see [#2](https://github.com/Watson1978/motion-deploygate/issues/2)).
 
-2. Configure the DeployGate SDK in your `Rakefile`. Set up `user_id` and `sdk` variables as following.
+1. Configure in order to submit app to DeployGate in your `Rakefile`. Set up `user_id` variables as following.
 
 ```ruby
 Motion::Project::App.setup do |app|
   ...
   app.development do
     app.deploygate.user_id = '<user_id>'
-    app.deploygate.sdk = 'vendor/deploygatesdk.jar'
   end
   ...
 end
