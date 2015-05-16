@@ -4,14 +4,14 @@ unless defined?(Motion::Project::Config)
   raise "This file must be required within a RubyMotion project Rakefile."
 end
 
-require 'util'
-require 'ios'
-require 'android'
+require_relative 'util'
+require_relative 'ios'
+require_relative 'android'
 
 if MotionDeployGate.android?
-  require 'rake/android'
+  require_relative 'rake/android'
 else
-  require 'rake/ios'
+  require_relative 'rake/ios'
 end
 
 class DeployGateConfig
