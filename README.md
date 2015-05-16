@@ -18,6 +18,8 @@ Or install it yourself as:
 
 ## Setup
 
+### iOS
+
 1. Download the DeployGate SDK for iOS from https://deploygate.com/docs/ios_sdk and unpack it. Then, copy `DeployGateSDK.framework` into `vendor` directory of your RubyMotion project. Create the `vendor` directory if it does not exist.
 
 2. Configure the DeployGate SDK in your `Rakefile`. Set up `user_id`, `api_key` and `sdk` variables as following.
@@ -34,7 +36,7 @@ Motion::Project::App.setup do |app|
 end
 ```
 
-### User authentication
+#### User authentication
 
 If you would enable this feature, the testers can receive a notification when you will submit a new version to DeployGate.
 Set up `user_infomation` and `url_scheme` variables to use the user authentication in your `Rakefile`.
@@ -65,6 +67,24 @@ class AppDelegate
 end
 ```
 
+### Android
+
+1. Download the DeployGate SDK for Android from https://deploygate.com/docs/sdk and unpack it. Then, copy `deploygatesdk.jar` (which putted in `deploygatesdk/libs/deploygatesdk.jar`) into `vendor` directory of your RubyMotion Android project. Create the `vendor` directory if it does not exist.
+
+2. Configure the DeployGate SDK in your `Rakefile`. Set up `user_id` and `sdk` variables as following.
+
+```ruby
+Motion::Project::App.setup do |app|
+  ...
+  app.development do
+    app.deploygate.user_id = '<user_id>'
+    app.deploygate.sdk = 'vendor/deploygatesdk.jar'
+  end
+  ...
+end
+```
+
+
 ## Usage
 
 ### Submit your app to DeployGate
@@ -76,7 +96,7 @@ end
 
 The `message` parameter is optional, and its content will be used as the description of submission.
 
-### Symbolicate a crashlog
+### Symbolicate a crashlog (iOS only)
 
 Download a crashlog from DeployGate then run the following command to symbolicate a crashlog.
 
