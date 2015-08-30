@@ -31,7 +31,6 @@ module DeployGateIOS
     )
     @config.frameworks << 'SystemConfiguration'
     create_launcher
-    apply_patch
   end
 
   private
@@ -62,29 +61,6 @@ EOF
       File.open(launcher_file, 'w') { |io| io.write(launcher_code) }
     end
     @config.files.unshift(launcher_file)
-  end
-
-  def apply_patch
-    Dir.glob(File.join(@sdk, "Headers") + "/*.h") do |file|
-      file = File.expand_path(file)
-      data = File.read(file)
-      new_data = []
-      data.each_line do |line|
-        # replace "typedef enum" declaration to avoid http://hipbyte.myjetbrains.com/youtrack/issue/RM-479
-        if line.strip == "typedef enum DeployGateSDKOption : NSUInteger {"
-          new_data << "typedef enum DeployGateSDKOption {\n"
-        else
-          new_data << line
-        end
-      end
-
-      new_data = new_data.join
-      if data != new_data
-        File.open(file, "w") do |io|
-          io.write new_data
-        end
-      end
-    end
   end
 
 end
